@@ -38,7 +38,7 @@
                         </div>
                     </div>
 
-                    <% if @spaces.count > 0 %>
+                    <% if @spaces.count > 0 && @spaces.first.content_types.count > 0 %>
                     <div class="pure-u-1 pure-u-lg-1-3">
                         <div class="l-box">
                             <h3>Latest Entries</h3>
@@ -47,7 +47,7 @@
                             <% else %>
                                 <p>No Entries found.</p>
                                 <p>
-                                    <%= link_to 'Create your first Entry', new_space_entry_path(current_space) %>
+                                    <%= link_to 'Create your first Entry', new_space_content_type_entry_path(current_space, current_space.content_types.first) %>
                                 </p>
                             <% end %>
                         </div>

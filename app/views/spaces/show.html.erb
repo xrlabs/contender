@@ -4,7 +4,8 @@
         <%= link_to 'Create new Content Type', new_space_content_type_path(@space), class: 'pure-button pure-button-primary' %>
         
             <% if @space.content_types.count > 0 %>
-                <%= link_to 'Create new Entry', new_space_content_type_path(@space), class: 'pure-button pure-button-primary' %>
+                <!-- TODO: Add a Dropdown here (once you click on the link), so you get a PROPER content_type_id  -->
+                <%= link_to 'Create new Entry', new_space_content_type_entry_path(space_id: @space, content_type_id: 1), class: 'pure-button pure-button-primary' %>
             <% end %>
         <hr>
 
@@ -14,11 +15,22 @@
                 <% @space.content_types.each do |ct| %>
                     <li>
                         <%= link_to ct.name, space_content_type_path(space_id: ct.space.id, id: ct.id) %>
-                        <div class="actions">
-                            <%= link_to edit_space_content_type_path(space_id: ct.space.id, id: ct.id) do %> 
-                                <%= fa_icon "gear", class: 'fa-fw' %>
-                            <% end %>
-                        </div>
+                        <ul class="actions">
+                            <!-- TODO: Make this a Dropdown Element -->
+                            <% if false %> <!-- commented out -->
+                            <li>
+                                <%= link_to edit_space_content_type_path(space_id: ct.space.id, id: ct.id) do %> 
+                                    <%= fa_icon "gear", class: 'fa-fw' %>
+                                <% end %>
+                            </li>
+                            <% end %> <!-- end commented code -->
+
+                            <li>
+                                <%= link_to new_space_content_type_entry_path(space_id: ct.space.id, content_type_id: ct.id) do %>
+                                    <%= fa_icon "file", class: 'fa-fw' %>
+                                <% end %>
+                            </li>
+                        </ul>
                     </li>
                 <% end %>
             </ul>

@@ -150,12 +150,20 @@ ul.spaces-list {
                 background-color: #ccc;
             }
         }
-        .actions {
+        ul.actions {
             position: absolute;
             display: inline-block;
             top: 0;
             right: 0;
             background-color: #fff;
+            padding: 0;
+            margin: 0;
+            li {
+                display: inline-block;
+                border: none;
+                margin: 0;
+                overflow: auto;
+            }
         }
     }
 }

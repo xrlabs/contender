@@ -32,7 +32,7 @@ class ContentTypesController < ApplicationController
     def update
         @content_type = ContentType.find(params[:id])
 
-        if @content_type.update(content_type_params)
+        if @content_type.update(content_type_update_params)
             redirect_to space_content_type_path(@content_type.space.id, @content_type.id)
         else
             render :edit
@@ -44,6 +44,10 @@ class ContentTypesController < ApplicationController
 
     private
         def content_type_params
-            params.require(:content_type).permit(:name)
+            params.require(:content_type).permit(:name, :fields)
+        end
+
+        def content_type_update_params
+            params.require(:content_type).permit(:name, :fields)
         end
 end

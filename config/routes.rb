@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   root 'dashboard#index'
 
   resources :spaces do
-    resources :content_types
-
-    resources :entries
+    resources :content_types do
+      resources :entries
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

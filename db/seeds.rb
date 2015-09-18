@@ -13,3 +13,32 @@ admin = User.create(
 )
 
 puts "Successfully created admin"
+
+dolan = Space.create(name: 'Dolan')
+vitago = Space.create(name: 'ViTaGo')
+
+dolan.content_types.create([
+    {
+        name: 'Article'
+    },
+    {
+        name: 'Judge'
+    },
+    {
+        name: 'Mentor'
+    }
+])
+
+vitago.content_types.create([
+    {
+        name: 'Personal'
+    },
+    {
+        name: 'Medikamente'
+    },
+    {
+        name: 'Räume'
+    }
+])
+
+puts "Successfully created Spaces & Content Types!"

@@ -1,0 +1,31 @@
+<div class="responsive-form bg-white">
+    <div class="r-box">
+        <h1>Create <b>new</b> <%= @content_type.name %></h1>
+
+        <% if @entry.errors.any? %>
+            <ul class="x-errors">
+            <% @entry.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+            <% end %>
+            </ul>
+        <% end %>
+
+
+        <%= form_for @entry, url: space_content_type_entries_path, html: { class: "pure-form pure-form-stacked"} do |f| %>
+            
+            <%= f.label :name, "Entry's ID" %>
+            <%= f.text_field :name, placeholder: "Entry's ID" %>
+
+            <% @fields["fields"].each do |field| %>
+                <%= label_tag field["name"] %>
+                <%= field_transform(field["name"], field["type"]) %>
+            <% end %>
+
+            <fieldset>
+                <%= link_back %>
+                <%= submit_tag "Save #{@content_type.name}", class: "pure-button pure-button-primary" %>
+            </fieldset>
+
+        <% end %>
+    </div>
+</div>
