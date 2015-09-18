@@ -1,3 +1,4 @@
+
 <div class="pure-g">
 
     <% if @spaces.count > 0 %>
@@ -22,7 +23,7 @@
         <div class="splash">
             <div class="l-box">
                 <div class="splash-logo" style="text-align: center; display: block;">
-                    <%= image_tag 'contender-logo.png' %>
+                    <%= image_tag 'contender-logo.png', class: "lg-only" %>
                     <h1>Contender - Dashboard</h1>
                 </div>
                 
@@ -31,7 +32,7 @@
                     <div class="pure-u-1 pure-u-lg-1-3">
                         <div class="l-box">
                             <h3>Quick Actions</h3>
-                            <ul>
+                            <ul class="no-p">
                                 <%= link_to 'Create a new Space', new_space_path %>
                             </ul>
                         </div>

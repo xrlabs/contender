@@ -25,7 +25,18 @@ class ContentTypesController < ApplicationController
         @content_type = ContentType.all
     end
 
+    def edit
+        @content_type = ContentType.find(params[:id])
+    end
+
     def update
+        @content_type = ContentType.find(params[:id])
+
+        if @content_type.update(content_type_params)
+            redirect_to space_content_type_path(@content_type.space.id, @content_type.id)
+        else
+            render :edit
+        end
     end
 
     def destroy

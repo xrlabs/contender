@@ -86,20 +86,20 @@ h1, h2 {
 
 .l-box-page {
     padding: 0;
-    @media screen and (max-width: 48) {
+    @media screen and (max-width: 64em) {
         padding: 1rem;
     }
 }
 
 .responsive-form {
-    width: 960px;
+    width: 64em;
     margin: 0 auto;
 
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     color: #555;
 
-    @media screen and (max-width: 48em) {
+    @media screen and (max-width: 64em) {
         width: 100%;
     }
 }
@@ -121,27 +121,41 @@ h1, h2 {
     color: #e33;
 }
 
+.lg-only {
+    display: auto;
+    @media screen and (max-width: 64em) {
+        display: none;
+    }
+}
+
 ul.spaces-list {
     margin: 0;
     padding: 0;
     list-style: none;
     li {
+        position: relative;
+        display: block;
         margin-bottom: 1em;
 
         background: #fff;
         border: 1px solid #ccc;
 
-        width: auto;
         overflow: hidden;
         a {
             padding: 1em;
-            display: inline-block;
+            display: block;
             text-decoration: none;
             color: #555;
-            width: 100%;
             &:hover {
                 background-color: #ccc;
             }
+        }
+        .actions {
+            position: absolute;
+            display: inline-block;
+            top: 0;
+            right: 0;
+            background-color: #fff;
         }
     }
 }

@@ -1,0 +1,28 @@
+<div class="responsive-form bg-white">
+    <div class="r-box">
+        <h1>Edit Content Type <b>"<%= @content_type.name %>"</b></h1>
+        
+        <%= form_for @content_type, url: space_content_type_path(@content_type.space.id, @content_type.id), method: :patch, html: { class: 'pure-form pure-form-stacked' } do |f| %>
+
+            <fieldset>
+                <h3>Name / ID</h3>
+                <%= f.text_field :name, value: @content_type.name %>
+            </fieldset>
+
+
+            <fieldset>
+                <h3>Fields</h3>
+
+                <%= f.text_area :fields, value: '{"name": "json", "date": "yesterday" }' %>
+            </fieldset>
+
+
+            <fieldset>
+                <%= link_back 'cancel' %>
+                <%= f.submit 'save changes', class: 'pure-button pure-button-primary' %>
+            </fieldset>
+
+        <% end %>
+
+    </div>
+</div>

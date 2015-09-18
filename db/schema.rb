@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918162120) do
+ActiveRecord::Schema.define(version: 20150918165406) do
 
   create_table "content_types", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "space_id"
+    t.text     "entries"
   end
 
   add_index "content_types", ["space_id"], name: "index_content_types_on_space_id"

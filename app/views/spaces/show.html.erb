@@ -1,22 +1,29 @@
 <div class="responsive-form">
     <div class="r-box">
-        <h1>Space View</h1>
-        <h2>Space ID: <%= @space.name %></h2>
-        <%= link_to 'Create new Content Type', new_space_content_type_path(@space) %>
-    
+        <h1>Space ID: <b><%= @space.name %></b></h1>
+        <%= link_to 'Create new Content Type', new_space_content_type_path(@space), class: 'pure-button pure-button-primary' %>
+        
+            <% if @space.content_types.count > 0 %>
+                <%= link_to 'Create new Entry', new_space_content_type_path(@space), class: 'pure-button pure-button-primary' %>
+            <% end %>
         <hr>
 
         <% if @space.content_types.count > 0 %>
             <h3>Content Types</h3>
-            <ul>
+            <ul class="spaces-list">
                 <% @space.content_types.each do |ct| %>
                     <li>
-                        <%= link_to ct.name, space_content_type_path(space_id: @space.id, id: ct.id) %>
+                        <%= link_to ct.name, space_content_type_path(space_id: ct.space.id, id: ct.id) %>
+                        <div class="actions">
+                            <%= link_to edit_space_content_type_path(space_id: ct.space.id, id: ct.id) do %> 
+                                <%= fa_icon "gear", class: 'fa-fw' %>
+                            <% end %>
+                        </div>
                     </li>
                 <% end %>
             </ul>
         <% else %>
-            slal
+            <p>No Content Types found.</p>
         <% end %>
 
     </div>
