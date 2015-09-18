@@ -4,17 +4,26 @@ html, body {
     margin: 0;
 }
 
+h1, h2 {
+    font-weight: 300;
+}
+
+.btn-sign-in {
+    background-color: #999;
+}
 
 .x-menu-horizontal {
 
     color: #fff;
     background-color: #1C495B;
     ul {
+        font-size: 0;
         display: inline-block;
         margin: 0;
         padding: 0;
         list-style: none;
         li {
+            font-size: 1rem;
             display: inline-block;
             a {
                 color: #fff;
@@ -24,8 +33,11 @@ html, body {
                 line-height: 1;
                 vertical-align: middle;
                 &:hover {
-                    background-color: rgba(0,0,0,0.3);
+                    background-color: #1188a4;
                 }
+            }
+            a.active {
+                background-color: #11a498;
             }
         }
     }
@@ -39,11 +51,11 @@ html, body {
             vertical-align: middle;
             padding: 0.5em 1em;
             &:hover {
-                background-color: rgba(0,0,0,0.3);
+                background-color: #1188a4;
             }
             img {
                 display: inline;
-                height: 1em;
+                height: 22px;
                 line-height: 1;
                 vertical-align: middle;
                 margin-right: 0.5em;
@@ -73,5 +85,63 @@ html, body {
 }
 
 .l-box-page {
-    padding: 1rem;
+    padding: 0;
+    @media screen and (max-width: 48) {
+        padding: 1rem;
+    }
+}
+
+.responsive-form {
+    width: 960px;
+    margin: 0 auto;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #555;
+
+    @media screen and (max-width: 48em) {
+        width: 100%;
+    }
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+.bg-none {
+    background-color: none;
+    background: none;
+}
+
+.r-box {
+    padding: 16px;
+}
+
+.x-errors {
+    color: #e33;
+}
+
+ul.spaces-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+        margin-bottom: 1em;
+
+        background: #fff;
+        border: 1px solid #ccc;
+
+        width: auto;
+        overflow: hidden;
+        a {
+            padding: 1em;
+            display: inline-block;
+            text-decoration: none;
+            color: #555;
+            width: 100%;
+            &:hover {
+                background-color: #ccc;
+            }
+        }
+    }
 }

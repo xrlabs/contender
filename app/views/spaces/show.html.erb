@@ -1,2 +1,23 @@
-<h1>Space#show</h1>
-<p>Find me in app/views/space/show.html.erb</p>
+<div class="responsive-form">
+    <div class="r-box">
+        <h1>Space View</h1>
+        <h2>Space ID: <%= @space.name %></h2>
+        <%= link_to 'Create new Content Type', new_space_content_type_path(@space) %>
+    
+        <hr>
+
+        <% if @space.content_types.count > 0 %>
+            <h3>Content Types</h3>
+            <ul>
+                <% @space.content_types.each do |ct| %>
+                    <li>
+                        <%= link_to ct.name, space_content_type_path(space_id: @space.id, id: ct.id) %>
+                    </li>
+                <% end %>
+            </ul>
+        <% else %>
+            slal
+        <% end %>
+
+    </div>
+</div>

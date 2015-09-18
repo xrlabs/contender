@@ -14,12 +14,15 @@ class SpacesController < ApplicationController
   end
 
   def show
+    @space = Space.find(params[:id])
   end
 
   def edit
+    @space = Space.find(params[:id])
   end
 
   def index
+    @spaces = Space.all
   end
 
   def update
@@ -30,6 +33,6 @@ class SpacesController < ApplicationController
 
   private
     def space_params
-      params.permit(:space).permit(:name)
+      params.require(:space).permit(:name)
     end
 end

@@ -1,6 +1,31 @@
-<h1>Create a new Content Type</h1>
+<div class="responsive-form bg-white">
+    <div class="r-box">
+        <h1>Create a new Content Type for the Space "<%= @space.name %>"</h1>
 
-<% form_for @content_type do |f| %>
-    <div style="border: 1px solid gray">
+        <% if @content_type.errors.any? %>
+            <ul class="x-errors">
+            <% @content_type.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+            <% end %>
+            </ul>
+        <% end %>
+
+        <%= form_for @content_type, url: space_content_types_path, html: { class: 'pure-form pure-form-stacked' } do |f| %>
+            <legend>Preparation</legend>
+            <p>
+                Enter the name of your new Content Type.
+                <br>
+                This name will act as it's <b>ID</b> ( <a href="#">@doc/api/id</a> ).
+            </p>
+            <fieldset>
+                <%= f.label :name %>
+                <%= f.text_field :name, placeholder: 'e.g. "Articles"' %>
+            </fieldset>
+
+            <fieldset>
+                <%= link_to 'cancel', :back, class: 'pure-button' %>
+                <%= f.submit 'Create Content Type', class: 'pure-button pure-button-primary', style: 'float: right' %>
+            </fieldset>
+        <% end %>  
     </div>
-<% end %>
+</div>

@@ -1,10 +1,98 @@
-<div class="splash">
-    <div class="l-box">
-    <div class="splash-logo" style="text-align: center; display: block;">
-        <%= image_tag 'contender-logo.png' %>
+<div class="pure-g">
+
+    <% if @spaces.count > 0 %>
+    <div class="pure-u-1 pure-u-md-1-6">
+        <div class="r-box">
+            <h3>Spaces</h3>
+            <ul class="spaces-list">
+            <% @spaces.each do |space| %>
+                <li><%= link_to space.name, space %></li>
+            <% end %>
+            </ul>
+        </div>
+    </div>
+    <% else %>
+        <p>No Spaces found.</p>
+        <p>
+            <%= link_to 'Create your first Space', new_space_path %>
+        </p>
+    <% end %>
+
+    <div class="pure-u-1 pure-u-md-2-3">
+        <div class="splash">
+            <div class="l-box">
+                <div class="splash-logo" style="text-align: center; display: block;">
+                    <%= image_tag 'contender-logo.png' %>
+                    <h1>Contender - Dashboard</h1>
+                </div>
+                
+                <div class="pure-g">
+
+                    <div class="pure-u-1 pure-u-lg-1-3">
+                        <div class="l-box">
+                            <h3>Quick Actions</h3>
+                            <ul>
+                                <%= link_to 'Create a new Space', new_space_path %>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <% if @spaces.count > 0 %>
+                    <div class="pure-u-1 pure-u-lg-1-3">
+                        <div class="l-box">
+                            <h3>Latest Entries</h3>
+                            <% if @entries.count > 0 %>
+
+                            <% else %>
+                                <p>No Entries found.</p>
+                                <p>
+                                    <%= link_to 'Create your first Entry', new_space_entry_path(current_space) %>
+                                </p>
+                            <% end %>
+                        </div>
+                    </div>
+                    <% end %>
+
+                    <div class="pure-u-1 pure-u-lg-1-3">
+                        <div class="l-box">
+                            <h3>User Management</h3>
+                            <div class="dasher">
+                                <div class="l-box">
+                                    <h4>Involved Users</h4>
+                                    <% User.all.each do |user| %>
+                                        <%= user.email %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="dasher">
+                                <div class="l-box">
+                                    <form class="pure-form">
+                                        <legend>Invite a new User</legend>
+                                        <br />
+                                        <input type="text" class="pure-input" placeholder="user@domain.com">
+                                        <button type="submit" class="pure-button pure-button-primary">send invite</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 
-        <h1>Dashboard#index</h1>
-        <p>Find me in app/views/dashboard/index.html.erb</p>
+    <div class="pure-u-1 pure-u-md-1-6">
+        <div class="r-box">
+            <h3>Help</h3>
+            <ul>
+                <li><a href="#">Getting Started</a></li>
+                <li><a href="#">User Management</a></li>
+                <li><a href="#">JSON Encoding</a></li>
+                <li><a href="#">Product Plans</a></li>
+                <li><a href="#">Documentation</a></li>
+            </ul>
+        </div>
     </div>
+
 </div>

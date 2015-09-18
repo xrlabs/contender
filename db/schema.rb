@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150917150055) do
+ActiveRecord::Schema.define(version: 20150918162120) do
 
   create_table "content_types", force: :cascade do |t|
-    t.integer  "entry_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "space_id"
   end
 
-  add_index "content_types", ["entry_id"], name: "index_content_types_on_entry_id"
+  add_index "content_types", ["space_id"], name: "index_content_types_on_space_id"
 
   create_table "entries", force: :cascade do |t|
     t.integer  "content_type_id"

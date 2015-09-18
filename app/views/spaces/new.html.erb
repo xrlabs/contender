@@ -1,2 +1,27 @@
-<h1>Space#new</h1>
-<p>Find me in app/views/space/new.html.erb</p>
+<div class="responsive-form bg-white">
+    <div class="r-box">
+        <h1>Create a new Space</h1>
+        <p>This <i>Holy Magical Wizard</i> will help you to create a new Space.</p>
+
+        <% if @space.errors.any? %>
+            <ul class="x-errors">
+            <% @space.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+            <% end %>
+            </ul>
+        <% end %>
+
+        <%= form_for @space, html: { class: 'x-form pure-form pure-form-stacked' } do |f| %>
+
+            <fieldset>
+                <%= f.text_field :name, placeholder: 'Space Name' %>
+            </fieldset>
+
+            <fieldset>
+                <%= f.submit 'submit' , class: 'pure-button pure-button-primary' %>
+                <%= link_to 'cancel', :back,  class: 'pure-button' %>
+            </fieldset>
+
+        <% end %>
+    </div>
+</div>
