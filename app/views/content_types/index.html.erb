@@ -1,0 +1,9 @@
+<h1>Content Types</h1>
+
+<% if @content_types %>
+
+<% else %>
+    <h2>Yikes!</h2>
+    <p>You haven't created any content types yet.</p>
+    <p>Click <%= link_to 'here', new_content_type_path %> to create your first Content Type!</p>
+<% end %>
