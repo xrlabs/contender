@@ -12,8 +12,10 @@
 
             <fieldset>
                 <h3>Fields</h3>
-
-                <%= f.text_area :fields, value: '{"name": "json", "date": "yesterday" }' %>
+                <% @content_type.fields_decoded.each do |field| %>
+                    <%= label_tag field["name"] %>
+                    <%= field_transform field["name"], field["type"] %>
+                <% end %>
             </fieldset>
 
 

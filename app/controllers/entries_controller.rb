@@ -5,10 +5,9 @@ class EntriesController < ApplicationController
         # Create Fields based on Content Type's fields attribute
         # This will need to use JSON::decode later on.
         # @fields = ActiveSupport::JSON.decode(@content_type.fields || ActiveSupport::JSON.encode('{ { "name": "name", "type": "text" }, { "name": "password", "type": "text" } }'))
-        @hash = { fields: [{name: 'name', type: 'text'}, {name: 'password', type: 'text'}] }
-        @json = ActiveSupport::JSON.encode(@hash)
-        @fields = ActiveSupport::JSON.decode(@json)
-
+        # @hash = { fields: [{name: 'name', type: 'text'}, {name: 'password', type: 'text'}] }
+        # @json = ActiveSupport::JSON.encode(@hash)
+        # @fields = ActiveSupport::JSON.decode(@json)
         @entry = Entry.new
     end
 

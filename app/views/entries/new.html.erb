@@ -1,6 +1,7 @@
+<!-- Entry#New -->
 <div class="responsive-form bg-white">
     <div class="r-box">
-        <h1>Create <b>new</b> <%= @content_type.name %></h1>
+        <h1>Create <b>new</b> <%= link_to @content_type.name, edit_space_content_type_path(space_id: @content_type.space.id, id: @content_type.id) %> in <%= link_to @content_type.space.name, @content_type.space %></h1>
 
         <% if @entry.errors.any? %>
             <ul class="x-errors">
@@ -13,10 +14,10 @@
 
         <%= form_for @entry, url: space_content_type_entries_path, html: { class: "pure-form pure-form-stacked"} do |f| %>
             
-            <%= f.label :name, "Entry's ID" %>
+            <%= f.label :name, "Entry's ID" %><small style="color: #f44">NOTE: This will be replaced by a user-chosen entry later in development</small>
             <%= f.text_field :name, placeholder: "Entry's ID" %>
 
-            <% @fields["fields"].each do |field| %>
+            <% @content_type.fields_decoded.each do |field| %>
                 <%= label_tag field["name"] %>
                 <%= field_transform(field["name"], field["type"]) %>
             <% end %>

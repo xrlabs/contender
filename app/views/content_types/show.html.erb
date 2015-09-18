@@ -2,5 +2,32 @@
     <div class="r-box">
         <h1><%= @space.name %></h1>
         <h2>Content Type: <b><%= @content_type.name %></b></h2>
+        <!-- TODO: Optional Link to Company's Documentation for this Content Type -->
+        <p>
+            Not sure what to do?
+            <a href="#">See the Documentation about <%= @content_type.name %>.</a>
+        </p>
+        <hr>
+
+        <h2>Fields</h2>
+        <div>
+            <% @content_type.fields_decoded.each do |field| %>
+                <div style="margin-bottom: 1em">
+                    <p style="font-size: 1.1rem">
+                        <%= field['name'] %>
+                        <br /><small>Type: <%= field['type'] %></small>
+                    </p>
+                </div>
+            <% end %>
+
+        </div>
+
+        <div>
+            <% if @space.content_types.count > 0 %>
+                <!-- TODO: Add a Dropdown here (once you click on the link), so you get a PROPER content_type_id  -->
+                <%= link_to "Back to #{@content_type.space.name}", space_path(@content_type.space.id), class: 'pure-button' %>
+                <%= link_to 'Create new Entry', new_space_content_type_entry_path(space_id: @content_type.space.id, content_type_id: @content_type.id), class: 'pure-button pure-button-primary', style: "float: right" %>
+            <% end %>
+        </div>
     </div>
 </div>

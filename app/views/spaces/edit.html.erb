@@ -1,2 +1,20 @@
-<h1>Space#edit</h1>
-<p>Find me in app/views/space/edit.html.erb</p>
+<div class="responsive-form bg-white">
+    <div class="r-box">
+        <h1>Edit Space <b>"<%= @space.name %>"</b></h1>
+        
+        <%= form_for @space, method: :patch, html: { class: 'pure-form pure-form-stacked' } do |f| %>
+
+            <fieldset>
+                <h3>Name / ID</h3>
+                <%= f.text_field :name %>
+            </fieldset>
+
+            <fieldset>
+                <%= link_back 'cancel' %>
+                <%= f.submit 'save changes', class: 'pure-button pure-button-primary' %>
+            </fieldset>
+
+        <% end %>
+
+    </div>
+</div>

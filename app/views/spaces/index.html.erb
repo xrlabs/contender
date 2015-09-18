@@ -6,7 +6,23 @@
         <% if @spaces.count > 0 %>
             <ul class="spaces-list">
                 <% @spaces.each do |space| %>
-                    <li><%= link_to space.name %></li>
+                    <li>
+                        <%= link_to space.name, space %>
+                        <ul class="actions">
+                            <!-- TODO: Make this a Dropdown Element -->
+                            <li>
+                                <%= link_to edit_space_path(id: space.id) do %> 
+                                    <%= fa_icon "gear", class: 'fa-fw' %>
+                                <% end %>
+                            </li>
+
+                            <li>
+                                <%= link_to new_space_content_type_path(space_id: space.id) do %>
+                                    <%= fa_icon "file", class: 'fa-fw', style: 'color: #0078E7' %>
+                                <% end %>
+                            </li>
+                        </ul>
+                    </li>
                 <% end %>
             </ul>
         <% else %>
